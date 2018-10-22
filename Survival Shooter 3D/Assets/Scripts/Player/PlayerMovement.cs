@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move(float h, float v)
     {
         movement.Set(h ,0f ,v);
-
+        
         //We must normalize the diagonal movement, bacause normally diagonally we have a greater movement
         movement = movement.normalized * speed * Time.deltaTime;
 
@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.MoveRotation(newRotation);
         }
     }
+
 
     private void Animating(float h, float v)
     {
