@@ -69,7 +69,6 @@
     <Compile Include="Assets\Scipts\Delivery\PlayerInteraction.cs" />
     <Compile Include="Assets\Scipts\Delivery\PlayerMovements.cs" />
     <Compile Include="Assets\Scipts\LeverListener.cs" />
-    <Compile Include="Assets\Scipts\Mom.cs" />
     <Compile Include="Assets\Scipts\SphereListener.cs" />
     <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
     <Reference Include="UnityEditor.StandardEvents">

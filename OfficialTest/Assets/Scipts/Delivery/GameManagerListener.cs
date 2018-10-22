@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Listener that is used to capture the event for a new player' instance
 public class GameManagerListener : MonoBehaviour {
 
 

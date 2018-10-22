@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour {
-
+    
+    //Parameters to manage the player exect sounds
     [Header("Player sound source end clips")]
     public AudioSource playerSoundSource;
     public AudioClip footstepSound;
     public AudioClip stomachSound;
 
+    //Player' speed
     [Header("Player' speeds")]
     public float fowardSpeed;
    
-
+    //Fixed time that the player must attend to do a static animation and that doesn't change
     [Header("Wating time to activate some static animation")]
     public float waitingTime;
 
@@ -23,12 +25,13 @@ public class PlayerMovements : MonoBehaviour {
     private Animator anim;
     private float speed;
     private Rigidbody playerRigidbody;
+    private Vector3 movement;
+    //Timer that is decreamented each time that the player is in static position
+    private float countdown;
+    //Different bools use to implement the player movements
     private bool isGrounded;
     private bool isWalking;
     private bool isPushing;
-    private float countdown;
-    private Vector3 movement;
-
 
     private void Awake()
     {
@@ -51,10 +54,11 @@ public class PlayerMovements : MonoBehaviour {
         }else if (isPushing)
         {
             Pushing(h,v);
-        }else if(h == 0 && v == 0)
+        }else if(h == 0 && v == 0 )
         {
             if (isPushing || isWalking)
             {
+                Debug.Log("StaticCall");
                 SetStatic();
             }
             else
@@ -74,6 +78,8 @@ public class PlayerMovements : MonoBehaviour {
 
     private void Move(float h, float v)
     {
+        isWalking = true;
+        anim.SetBool("IsWalking", isWalking);
         movement.Set(h, 0f, v);
         movement = movement.normalized * speed * Time.deltaTime;
         playerRigidbody.MovePosition(transform.position + movement);
@@ -93,7 +99,7 @@ public class PlayerMovements : MonoBehaviour {
 
     private void Pushing(float h, float v)
     {
-        if(v == 1 || h == 1)
+        if (v == 1 || h == 1)
         {
             anim.SetBool("IsPushing", true);
 
@@ -111,7 +117,7 @@ public class PlayerMovements : MonoBehaviour {
         isWalking = false;
         countdown = waitingTime;
         speed = fowardSpeed;
-        anim.SetBool("IsWalking", false);
+        anim.SetBool("IsWalking", isWalking);
     }
 
     private void StaticAnimation(int v)
@@ -122,6 +128,7 @@ public class PlayerMovements : MonoBehaviour {
 
     private void OnCollisionEnter(Collision other)
     {
+        //Collision use to detect the landing of character on the floor and reset of all element to give it's the possibility to redo a jump 
         if (other.gameObject.CompareTag("Floor"))
         {
             Debug.Log("IsGrounded");
@@ -130,11 +137,13 @@ public class PlayerMovements : MonoBehaviour {
         }
     }
 
+    //Method call by the Interactios script
     public void setIsPushing(bool v)
     {
         isPushing = v;
     }
 
+    //Method call by the Interactios script
     public void changeSpeed(float metalPercentageReduction)
     {
         speed -= speed * metalPercentageReduction;
