@@ -32,6 +32,7 @@ public class PlayerMovements : MonoBehaviour {
     private bool isGrounded;
     private bool isWalking;
     private bool isPushing;
+    private Quaternion freezingRotation;
 
     private void Awake()
     {
@@ -63,6 +64,7 @@ public class PlayerMovements : MonoBehaviour {
             }
             else
             {
+                playerRigidbody.rotation = freezingRotation;
                 countdown -= Time.deltaTime;
                 if(countdown <= 0)
                 {
@@ -118,6 +120,7 @@ public class PlayerMovements : MonoBehaviour {
         countdown = waitingTime;
         speed = fowardSpeed;
         anim.SetBool("IsWalking", isWalking);
+        freezingRotation = playerRigidbody.rotation;
     }
 
     private void StaticAnimation(int v)

@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4571689869535916}
   - component: {fileID: 95791489621359708}
+  - component: {fileID: 114488542684394656}
+  - component: {fileID: 114482658973992720}
   - component: {fileID: 54965601967348808}
   - component: {fileID: 136372047587157572}
-  - component: {fileID: 114981199717220578}
-  - component: {fileID: 114855481813995366}
   m_Layer: 0
   m_Name: SPlayer
   m_TagString: Player
@@ -140,7 +140,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364302891469058}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -166,7 +166,7 @@ Animator:
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114855481813995366
+--- !u!114 &114482658973992720
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,27 +174,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1364302891469058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f63c9eb158fb48449c429c5f2dae7f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  metalPercentageReduction: 0
---- !u!114 &114981199717220578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1364302891469058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec4a1162e97e2ba4589a6eecd8a5d13d, type: 3}
+  m_Script: {fileID: 11500000, guid: d43e32112f923084ab25731fd13994eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerSoundSource: {fileID: 0}
   footstepSound: {fileID: 0}
   stomachSound: {fileID: 0}
   fowardSpeed: 6
-  waitingTime: 5
-  jumpHigh: 100
+  waitingTime: 0
+  jumpHigh: 0
+--- !u!114 &114488542684394656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364302891469058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0799ceeb7aeb4d04aade64242cf8f9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metalPercentageReduction: 0
 --- !u!136 &136372047587157572
 CapsuleCollider:
   m_ObjectHideFlags: 1
