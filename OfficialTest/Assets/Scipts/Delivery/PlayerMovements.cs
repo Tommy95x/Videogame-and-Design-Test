@@ -49,6 +49,10 @@ public class PlayerMovements : MonoBehaviour {
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+        float mom = Input.GetAxisRaw("Jump");
+
+        Debug.Log(mom);
+
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jumping();
